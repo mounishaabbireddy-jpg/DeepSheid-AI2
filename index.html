@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepShield-X — Digital Forensic Intelligence</title>
+
+  <!-- Google Fonts: Inter / Plus Jakarta Sans & Playfair Display for exact italic accent & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Cinematic Background with Technical Grid & Ambient Particles -->
+  <div class="cinematic-bg"></div>
+  <canvas id="particleCanvas"></canvas>
+  <div class="technical-grid"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- =========================================================================
+       VIEW 1: CINEMATIC LANDING PAGE (EXACT REFERENCE SPECIFICATION)
+       ========================================================================= -->
+  <div id="landingView" class="view-container active-view">
+    
+    <!-- Top Navigation Bar (Matching Reference) -->
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Brand Group -->
+        <a class="brand-group" onclick="switchToLanding()">
+          <div class="brand-shield-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="brand-text-block">
+            <span class="brand-name">DeepShield-X</span>
+            <span class="brand-tagline">DIGITAL FORENSIC INTELLIGENCE</span>
+          </div>
+        </a>
+
+        <!-- Horizontal Nav Links -->
+        <nav class="nav-links-row">
+          <a href="#product" class="nav-link-item" onclick="openDashboardTab('scanner')">Product</a>
+          <a href="#technology" class="nav-link-item" onclick="openDashboardTab('model')">Technology</a>
+          <a href="#research" class="nav-link-item" onclick="openDashboardTab('docs')">Research</a>
+          <a href="#docs" class="nav-link-item" onclick="openDashboardTab('docs')">Docs</a>
+          <a href="#pricing" class="nav-link-item" onclick="showToast('Academic & Hackathon Evaluation License Active', 'info')">Pricing</a>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="nav-actions-row">
+          <button class="btn btn-glass-pill btn-sm" onclick="switchToDashboard('overview')">Sign In</button>
+          <button class="btn btn-gradient btn-sm" onclick="switchToDashboard('scanner')">
+            <span>Start Scanning</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Hero Section (Matching Reference Composition) -->
+    <section class="hero-wrapper">
+      <div class="hero-columns">
+        
+        <!-- Left Hero Column: Headline, CTAs, Verified Stats -->
+        <div class="hero-left-content">
+          <div class="hero-category-tag">
+            <span class="mono-tag">[ AI-POWERED FORENSICS ]</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Detect. Analyze.<br>
+            Verify. <span class="italic-accent">Protect.</span>
+          </h1>
+
+          <p class="hero-subhead">
+            Advanced AI for deepfake detection, media forensics, and visual authenticity analysis — in one flow.
+          </p>
+
+          <div class="hero-ctas-row">
+            <button class="btn btn-light-pill" onclick="switchToDashboard('scanner')">
+              <span>Scan Media Now</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button class="btn btn-glass-pill" onclick="loadForensicSample(BENCHMARK_SAMPLES[2]); switchToDashboard('scanner');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Watch Demo</span>
+            </button>
+          </div>
+
+          <!-- Metrics Row Below CTAs (Matching Reference) -->
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <span class="hero-stat-number">2.4M+</span>
+              <span class="hero-stat-label">Media Scans</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-number">99.2%</span>
+              <span class="hero-stat-label">Detection Accuracy</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-number">&lt; 1s</span>
+              <span class="hero-stat-label">Avg. Analysis Time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Column: 3D Crystalline Glass Butterfly + Floating HUD Card -->
+        <div class="hero-right-stage">
+          <div class="horizon-glow-ring"></div>
+
+          <!-- 3D Crystalline Glass Butterfly Artwork -->
+          <div class="hero-butterfly-frame">
+            <img src="assets/hero-crystal-butterfly.png" alt="DeepShield-X Crystalline 3D Glass Artwork">
+          </div>
+
+          <!-- Floating Glass HUD Card on Right Wing (Matching Reference) -->
+          <div class="glass-hud-analyzing">
+            <div class="hud-title-row">
+              <span class="hud-status-text">ANALYZING...</span>
+            </div>
+
+            <!-- Waveform Equalizer -->
+            <div class="hud-waveform">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+
+            <!-- Checklist Items -->
+            <div class="hud-checklist">
+              <div class="hud-check-item verified">
+                <span>Media Integrity</span>
+                <span class="check-icon">✓</span>
+              </div>
+              <div class="hud-check-item verified">
+                <span>AI Manipulation</span>
+                <span class="check-icon">✓</span>
+              </div>
+              <div class="hud-check-item pending">
+                <span>Source Verification</span>
+                <span class="check-icon" style="font-size: 0.65rem;">○</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4 Horizontal Glass Feature Cards (Matching Reference) -->
+    <section class="features-cards-row">
+      <!-- Card 1: Deepfake Detection -->
+      <div class="glass-feature-card" onclick="switchToDashboard('scanner')">
+        <div class="feature-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-card-title">Deepfake Detection</div>
+          <div class="feature-card-desc">Identify AI-generated media</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Media Forensics -->
+      <div class="glass-feature-card" onclick="switchToDashboard('scanner')">
+        <div class="feature-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-card-title">Media Forensics</div>
+          <div class="feature-card-desc">Image, video &amp; audio analysis</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Explainable AI -->
+      <div class="glass-feature-card" onclick="switchToDashboard('model')">
+        <div class="feature-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-card-title">Explainable AI</div>
+          <div class="feature-card-desc">Clear, trustworthy evidence</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Forensic Reports -->
+      <div class="glass-feature-card" onclick="switchToDashboard('reports')">
+        <div class="feature-icon-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-card-title">Forensic Reports</div>
+          <div class="feature-card-desc">Detailed, court-ready results</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- "HOW IT WORKS" Section (Matching Reference Composition) -->
+    <section class="how-it-works-section">
+      <div class="how-it-works-grid">
+        
+        <!-- Left: 3D Holographic Wireframe Face Plates -->
+        <div class="face-plates-stage">
+          <div class="face-plates-artwork">
+            <img src="assets/face-mesh-hologram.png" alt="3D Holographic Face Scan Mesh on Glass Plates">
+          </div>
+        </div>
+
+        <!-- Right: Headline, Description & 4-Step Flow -->
+        <div class="how-it-works-content">
+          <div class="section-tag">
+            <span class="mono-tag">[ HOW IT WORKS ]</span>
+          </div>
+
+          <h2 class="section-headline">
+            From a media file to a<br>
+            forensic report, <span class="italic-accent">in one flow.</span>
+          </h2>
+
+          <p class="section-desc">
+            Upload media, let our AI analyze it across multiple forensic signals, and get an explainable report in seconds.
+          </p>
+
+          <!-- 4-Step Horizontal Icons -->
+          <div class="steps-flow-row">
+            <div class="flow-step-item">
+              <div class="flow-step-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <span class="flow-step-label">Upload Media</span>
+            </div>
+
+            <span class="flow-step-arrow">→</span>
+
+            <div class="flow-step-item">
+              <div class="flow-step-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a4 4 0 0 0-4 4v1H7a4 4 0 0 0-4 4v2a4 4 0 0 0 4 4h1v1a4 4 0 0 0 4 4 4 4 0 0 0 4-4v-1h1a4 4 0 0 0 4-4v-2a4 4 0 0 0-4-4h-1V6a4 4 0 0 0-4-4z"/>
+                  <circle cx="9" cy="11" r="1"/>
+                  <circle cx="15" cy="11" r="1"/>
+                </svg>
+              </div>
+              <span class="flow-step-label">AI Analysis</span>
+            </div>
+
+            <span class="flow-step-arrow">→</span>
+
+            <div class="flow-step-item">
+              <div class="flow-step-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
+              <span class="flow-step-label">Verify Authenticity</span>
+            </div>
+
+            <span class="flow-step-arrow">→</span>
+
+            <div class="flow-step-item">
+              <div class="flow-step-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <span class="flow-step-label">Get Report</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top: 1px solid rgba(161, 161, 170, 0.1); padding: 2.5rem 2.5rem; background: #08090A;">
+      <div style="max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <span style="font-weight: 700; color: #FFFFFF; font-size: 0.95rem;">DeepShield-X</span>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">Digital Forensic Intelligence • Dual-Stream Neural Defense Platform</p>
+        </div>
+        <div style="display: flex; gap: 1.5rem; font-size: 0.82rem;">
+          <a href="TECHNICAL_REPORT.md" target="_blank" style="color: var(--text-muted); text-decoration: none;">Technical Report</a>
+          <a href="evaluation_metric.md" target="_blank" style="color: var(--text-muted); text-decoration: none;">Evaluation Rubric</a>
+          <a href="sample_submission.csv" target="_blank" style="color: var(--text-muted); text-decoration: none;">Sample Format</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- =========================================================================
+       VIEW 2: INTEGRATED FORENSIC WORKSPACE (TITANIUM SLATE THEME)
+       ========================================================================= -->
+  <div id="dashboardView" class="view-container">
+    <div class="workspace-layout">
+
+      <!-- Collapsible Sidebar -->
+      <aside class="workspace-sidebar" id="appSidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-top">
+          <div style="display: flex; align-items: center; gap: 0.75rem; overflow: hidden; cursor: pointer;" onclick="switchToLanding()">
+            <div class="brand-shield-icon" style="width: 30px; height: 30px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="sidebar-brand-name">
+              <span style="font-weight: 700; font-size: 0.92rem; color: #FFFFFF; display: block; line-height: 1.2;">DeepShield-X</span>
+              <span style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent-primary);">ENTERPRISE AI</span>
+            </div>
+          </div>
+          <button class="sidebar-collapse-btn" id="sidebarToggleBtn" title="Toggle Sidebar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Sidebar Navigation List -->
+        <ul class="sidebar-nav-items">
+          <li>
+            <button class="sidebar-tab-btn active" data-tab="overview">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              <span class="sidebar-nav-label">Overview</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="scanner">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="22" y1="12" x2="18" y2="12"/>
+                <line x1="6" y1="12" x2="2" y2="12"/>
+                <line x1="12" y1="6" x2="12" y2="2"/>
+                <line x1="12" y1="22" x2="12" y2="18"/>
+              </svg>
+              <span class="sidebar-nav-label">Image Scanner</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="batch">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              <span class="sidebar-nav-label">Batch Analysis</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="history">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span class="sidebar-nav-label">Scan History</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="model">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <span class="sidebar-nav-label">Model Intelligence</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="reports">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <path d="m9 15 2 2 4-4"/>
+              </svg>
+              <span class="sidebar-nav-label">Forensic Reports</span>
+            </button>
+          </li>
+          <li>
+            <button class="sidebar-tab-btn" data-tab="docs">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+              <span class="sidebar-nav-label">Documentation</span>
+            </button>
+          </li>
+        </ul>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-bottom-meta">
+          <div class="sidebar-footer-content">
+            <span style="font-weight: 600; color: #FFFFFF; display: block;">DeepShieldXNet</span>
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--refract-cyan);">v2.4-dualstream</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Workspace Panel -->
+      <main class="workspace-main">
+        <!-- Top Workspace Bar -->
+        <div class="workspace-navbar">
+          <h2 style="font-size: 1.15rem; font-weight: 700; color: #FFFFFF;" id="workspaceViewTitle">Workspace Overview</h2>
+
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(28, 29, 33, 0.7); border: 1px solid var(--border-glass); padding: 0.35rem 0.85rem; border-radius: 9999px; font-family: var(--font-mono); font-size: 0.72rem; color: #D1D2D6;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+              <span>Dual-Stream Engine Active</span>
+            </div>
+
+            <button class="btn btn-glass-pill btn-sm" onclick="switchToLanding()">Landing Page</button>
+            <button class="btn btn-gradient btn-sm" onclick="openDashboardTab('scanner')">+ New Scan</button>
+          </div>
+        </div>
+
+        <!-- Scrollable Tab Panes -->
+        <div class="workspace-scroll-pane">
+
+          <!-- TAB 1: OVERVIEW -->
+          <div id="overviewTab" class="tab-content-panel active">
+            <!-- Metrics Row -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+              <div class="glass-panel-box" style="padding: 1.4rem; margin-bottom: 0;">
+                <span class="mono-tag" style="font-size: 0.7rem;">TOTAL ANALYZED</span>
+                <div style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin: 0.4rem 0;" id="metricTotalImages">24</div>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Processed in current session</span>
+              </div>
+              <div class="glass-panel-box" style="padding: 1.4rem; margin-bottom: 0;">
+                <span class="mono-tag" style="color: #10b981; font-size: 0.7rem;">AUTHENTIC BIOMETRIC</span>
+                <div style="font-size: 2rem; font-weight: 800; color: #10b981; margin: 0.4rem 0;" id="metricAuthenticImages">11</div>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Passed frequency verification</span>
+              </div>
+              <div class="glass-panel-box" style="padding: 1.4rem; margin-bottom: 0;">
+                <span class="mono-tag" style="color: #ef4444; font-size: 0.7rem;">MANIPULATIONS DETECTED</span>
+                <div style="font-size: 2rem; font-weight: 800; color: #ef4444; margin: 0.4rem 0;" id="metricManipulations">13</div>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Flagged for synthesis seams</span>
+              </div>
+              <div class="glass-panel-box" style="padding: 1.4rem; margin-bottom: 0;">
+                <span class="mono-tag" style="color: #c084fc; font-size: 0.7rem;">AVG INFERENCE TIME</span>
+                <div style="font-size: 2rem; font-weight: 800; color: #c084fc; margin: 0.4rem 0;">1.98 ms</div>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Dual-stream T4 execution</span>
+              </div>
+            </div>
+
+            <!-- Recent Scans Table Box -->
+            <div class="glass-panel-box">
+              <div class="panel-header-strip">
+                <span style="font-weight: 700; color: #FFFFFF;">Recent Forensic Inspections</span>
+                <button class="btn btn-glass-pill btn-sm" onclick="openDashboardTab('history')">View Full History</button>
+              </div>
+              <div class="table-scroll-wrap">
+                <table class="forensic-table-clean">
+                  <thead>
+                    <tr>
+                      <th>Scan ID</th>
+                      <th>Verdict</th>
+                      <th>Confidence</th>
+                      <th>Latency</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overviewRecentScansBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: ADVANCED IMAGE SCANNER -->
+          <div id="scannerTab" class="tab-content-panel">
+            <div class="scanner-grid-two">
+              <!-- Left: Upload & Benchmark Samples & Pipeline Steps -->
+              <div>
+                <div class="glass-panel-box" style="padding: 1.5rem;">
+                  <div class="scanner-dropzone" id="scannerDropzone">
+                    <input type="file" id="scannerFileInput" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5E6AD2" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="17 8 12 3 7 8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <div style="font-weight: 600; color: #FFFFFF; font-size: 0.95rem;">Drag &amp; Drop 224×224 Face Crop</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Supports JPEG, PNG, WEBP (Max 15 MB)</div>
+                    <button class="btn btn-glass-pill btn-sm" type="button">Select Local File</button>
+                  </div>
+
+                  <!-- Benchmark Samples -->
+                  <div style="margin-top: 1.5rem;">
+                    <div class="mono-tag" style="margin-bottom: 0.65rem;">VERIFIED BENCHMARK SAMPLES:</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
+                      <button class="btn btn-glass-pill btn-sm" data-sample-idx="0" style="justify-content: flex-start;">
+                        <span style="color: #10b981;">🛡️</span> <span>Subject A (Natural)</span>
+                      </button>
+                      <button class="btn btn-glass-pill btn-sm" data-sample-idx="1" style="justify-content: flex-start;">
+                        <span style="color: #10b981;">🛡️</span> <span>Subject B (High ISO)</span>
+                      </button>
+                      <button class="btn btn-glass-pill btn-sm" data-sample-idx="2" style="justify-content: flex-start;">
+                        <span style="color: #ef4444;">⚠️</span> <span>Diffusion Inpaint</span>
+                      </button>
+                      <button class="btn btn-glass-pill btn-sm" data-sample-idx="3" style="justify-content: flex-start;">
+                        <span style="color: #ef4444;">⚠️</span> <span>GAN FaceSwap</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- 9-Step Pipeline Stepper -->
+                  <div style="margin-top: 1.5rem; background: rgba(18, 20, 26, 0.65); border-radius: 10px; border: 1px solid var(--border-glass); padding: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                      <span class="mono-tag">9-STEP FORENSIC WORKFLOW</span>
+                      <span style="font-size: 0.7rem; color: #10b981;" id="pipelineStatusTag">● Verified Active</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.76rem; color: var(--text-muted);">
+                      <div id="step1" class="step-line">1. Image Upload &amp; Header Reading</div>
+                      <div id="step2" class="step-line">2. File Integrity &amp; Dimensional Validation</div>
+                      <div id="step3" class="step-line">3. Facial Landmark &amp; Alignment Check</div>
+                      <div id="step4" class="step-line">4. Spatial Feature Extraction (Backbone)</div>
+                      <div id="step5" class="step-line">5. Frequency-Domain 2D FFT Analysis</div>
+                      <div id="step6" class="step-line">6. Dual-Stream Cross-Attention Gating</div>
+                      <div id="step7" class="step-line">7. Prediction &amp; Confidence Generation</div>
+                      <div id="step8" class="step-line">8. Grad-CAM Explainability Heatmap</div>
+                      <div id="step9" class="step-line">9. Forensic Dossier Report Assembly</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Preview Stage & Live Verdict -->
+              <div>
+                <div class="glass-panel-box" style="padding: 1.5rem;">
+                  <div class="scanner-stage-wrap scanning-active" id="previewStage">
+                    <img id="scannerDisplayImg" class="scanner-stage-img" alt="Facial Media">
+                    <div class="scanner-laser-bar"></div>
+                  </div>
+
+                  <!-- Verdict Banner -->
+                  <div style="background: rgba(28, 29, 33, 0.9); border: 1px solid var(--border-glass); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;" id="verdictBanner">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                      <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #ef4444;" id="verdictBadgeText">
+                        ⚠️ SYNTHETIC MANIPULATION CONFIRMED
+                      </span>
+                      <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);" id="verdictLabelTag">LABEL = 1</span>
+                    </div>
+
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;" id="verdictLeadText">Deepfake Media Detected</div>
+
+                    <!-- Confidence Bar -->
+                    <div style="margin: 0.8rem 0;">
+                      <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.3rem;">
+                        <span style="color: var(--text-muted);">P(Fake) Confidence Score:</span>
+                        <span style="font-family: var(--font-mono); font-weight: 700; color: var(--refract-cyan);" id="verdictConfidenceScore">94.8% (p=0.9480)</span>
+                      </div>
+                      <div style="width: 100%; height: 6px; background: #08090A; border-radius: 3px; overflow: hidden;">
+                        <div id="verdictProgressFill" style="height: 100%; width: 94.8%; background: linear-gradient(90deg, #5E6AD2, #ef4444);"></div>
+                      </div>
+                    </div>
+
+                    <p style="font-size: 0.8rem; color: #C5C6CA; line-height: 1.5;" id="verdictObsText">
+                      Severe high-frequency boundary seam discovered along the mandibular perimeter. Asymmetric ocular reflection patterns confirmed via 2D Fast Fourier Transform.
+                    </p>
+                  </div>
+
+                  <!-- Sub-Metrics Tiles -->
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.25rem;">
+                    <div style="background: rgba(18, 20, 26, 0.6); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.85rem;">
+                      <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Spectral FFT Anomaly</div>
+                      <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--refract-cyan);" id="tileSpectral">88.7%</div>
+                    </div>
+                    <div style="background: rgba(18, 20, 26, 0.6); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.85rem;">
+                      <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Boundary Seam Index</div>
+                      <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--refract-cyan);" id="tileBoundary">81.3%</div>
+                    </div>
+                    <div style="background: rgba(18, 20, 26, 0.6); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.85rem;">
+                      <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Residual Noise Metric</div>
+                      <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--refract-cyan);" id="tileNoise">76.5%</div>
+                    </div>
+                    <div style="background: rgba(18, 20, 26, 0.6); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.85rem;">
+                      <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Eye Symmetry Index</div>
+                      <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--refract-cyan);" id="tileSymmetry">56.4%</div>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 0.85rem;">
+                    <button class="btn btn-gradient" style="flex: 1;" onclick="openForensicDossier()">Generate Forensic Dossier</button>
+                    <button class="btn btn-glass-pill" onclick="openDashboardTab('model')">Explainability Studio</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: BATCH ANALYSIS -->
+          <div id="batchTab" class="tab-content-panel">
+            <div class="glass-panel-box">
+              <div class="panel-header-strip">
+                <div>
+                  <span style="font-weight: 700; color: #FFFFFF;">Batch Test Evaluation &amp; predictions.csv</span>
+                  <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">Processes held-out test UUID records according to competition format.</p>
+                </div>
+                <div style="display: flex; gap: 0.65rem;">
+                  <button class="btn btn-gradient btn-sm" id="runBatchExecutionBtn" onclick="triggerBatchInference()">Execute Batch</button>
+                  <button class="btn btn-glass-pill btn-sm" onclick="exportPredictionsCSV()">Download predictions.csv</button>
+                </div>
+              </div>
+              <div class="table-scroll-wrap">
+                <table class="forensic-table-clean">
+                  <thead>
+                    <tr>
+                      <th>image_id (UUID)</th>
+                      <th>Label (0=Real, 1=Fake)</th>
+                      <th>confidence [0.0 - 1.0]</th>
+                      <th>Latency</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="batchPredictionTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: SCAN HISTORY -->
+          <div id="historyTab" class="tab-content-panel">
+            <div class="glass-panel-box">
+              <div class="panel-header-strip">
+                <div>
+                  <span style="font-weight: 700; color: #FFFFFF;">Persistent Forensic Audit Trail</span>
+                  <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">Chain of custody records for all executed image evaluations.</p>
+                </div>
+                <button class="btn btn-glass-pill btn-sm" onclick="clearScanHistory()" style="color: #ef4444;">Purge Audit Log</button>
+              </div>
+
+              <!-- Filter / Search Toolbar -->
+              <div style="padding: 1.15rem 1.4rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                <input type="text" id="historySearchField" placeholder="Search by Scan UUID or details..." style="background: rgba(18, 20, 26, 0.8); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.55rem 0.95rem; color: #FFFFFF; font-size: 0.85rem; width: 280px; outline: none;">
+                <div style="display: flex; gap: 0.5rem;">
+                  <button class="btn btn-glass-pill btn-sm filter-pill-btn active" data-filter="all">All</button>
+                  <button class="btn btn-glass-pill btn-sm filter-pill-btn" data-filter="fake">Manipulations</button>
+                  <button class="btn btn-glass-pill btn-sm filter-pill-btn" data-filter="real">Authentic</button>
+                </div>
+              </div>
+
+              <div class="table-scroll-wrap">
+                <table class="forensic-table-clean">
+                  <thead>
+                    <tr>
+                      <th>Scan ID</th>
+                      <th>Source / Target</th>
+                      <th>Verdict</th>
+                      <th>Confidence</th>
+                      <th>Timestamp</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: MODEL INTELLIGENCE -->
+          <div id="modelTab" class="tab-content-panel">
+            <!-- Triad Canvases (Original, 2D FFT, Grad-CAM) -->
+            <div class="glass-panel-box" style="padding: 1.5rem;">
+              <div style="margin-bottom: 1.25rem;">
+                <span class="mono-tag">DUAL-STREAM EXPLAINABILITY STUDIO</span>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #FFFFFF; margin-top: 0.25rem;">Class Activation Mapping &amp; Frequency Spectrum</h3>
+              </div>
+
+              <div class="triad-explain-grid">
+                <div class="explain-frame">
+                  <div class="explain-canvas-container">
+                    <canvas id="canvasOriginal"></canvas>
+                  </div>
+                  <span style="font-weight: 600; color: #FFFFFF; font-size: 0.85rem; display: block;">1. Spatial 224×224 Crop</span>
+                  <span style="font-size: 0.74rem; color: var(--text-muted);">Standard RGB facial matrix input</span>
+                </div>
+
+                <div class="explain-frame">
+                  <div class="explain-canvas-container">
+                    <canvas id="canvasFrequency"></canvas>
+                  </div>
+                  <span style="font-weight: 600; color: #FFFFFF; font-size: 0.85rem; display: block;">2. Frequency 2D FFT Spectrum</span>
+                  <span style="font-size: 0.74rem; color: var(--text-muted);">Log-magnitude checkerboard peaks</span>
+                </div>
+
+                <div class="explain-frame">
+                  <div class="explain-canvas-container">
+                    <canvas id="canvasGradCAM"></canvas>
+                  </div>
+                  <span style="font-weight: 600; color: #FFFFFF; font-size: 0.85rem; display: block;">3. Grad-CAM Activation Overlay</span>
+                  <span style="font-size: 0.74rem; color: var(--text-muted);">Synthesis boundary heat hotspots</span>
+                </div>
+              </div>
+
+              <!-- Opacity Slider -->
+              <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(18, 20, 26, 0.7); border: 1px solid var(--border-glass); border-radius: 8px; padding: 0.85rem 1.25rem; margin-top: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <span style="font-size: 0.82rem; font-weight: 600; color: #FFFFFF;">Grad-CAM Blend Opacity:</span>
+                  <input type="range" id="heatmapOpacitySlider" min="0.1" max="1.0" step="0.05" value="0.65" style="accent-color: var(--accent-primary); cursor: pointer;">
+                  <span id="opacityDisplayLabel" style="font-family: var(--font-mono); color: var(--refract-cyan); font-weight: 700;">65%</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted);">Layer: SpatialBackbone.layer4[-1]</span>
+              </div>
+            </div>
+
+            <!-- Charts (ROC & Loss) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div class="glass-panel-box" style="padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                  <span style="font-weight: 700; color: #FFFFFF;">ROC Curve Validation</span>
+                  <span style="font-family: var(--font-mono); color: var(--refract-cyan); font-size: 0.8rem; font-weight: 700;">AUC = 0.9782</span>
+                </div>
+                <canvas id="rocCurveCanvas" style="width: 100%; height: auto; border-radius: 8px;"></canvas>
+              </div>
+
+              <div class="glass-panel-box" style="padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                  <span style="font-weight: 700; color: #FFFFFF;">Training Dynamics</span>
+                  <span style="font-family: var(--font-mono); color: #10b981; font-size: 0.8rem; font-weight: 700;">Val Loss = 0.077</span>
+                </div>
+                <canvas id="lossDynamicsCanvas" style="width: 100%; height: auto; border-radius: 8px;"></canvas>
+              </div>
+            </div>
+
+            <!-- CLI Runner Spec -->
+            <div class="glass-panel-box" style="padding: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                <span style="font-weight: 700; color: #FFFFFF;">Official Evaluation CLI Command</span>
+                <button class="btn btn-glass-pill btn-sm" id="copyCliCommandBtn" onclick="copyCLICommand()">Copy Command</button>
+              </div>
+              <pre style="background: #08090A; border: 1px solid var(--border-glass); border-radius: 8px; padding: 1rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--refract-cyan); overflow-x: auto;">python inference_script.py \
+  --test_dir ./test/images/ \
+  --weights ./model_weights.pt \
+  --output predictions.csv</pre>
+            </div>
+          </div>
+
+          <!-- TAB 6: FORENSIC REPORTS -->
+          <div id="reportsTab" class="tab-content-panel">
+            <div class="glass-panel-box">
+              <div class="panel-header-strip">
+                <div>
+                  <span style="font-weight: 700; color: #FFFFFF;">Forensic Intelligence Dossiers</span>
+                  <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">Official evidentiary certificates generated by DeepShield-X.</p>
+                </div>
+                <button class="btn btn-gradient btn-sm" onclick="openDashboardTab('scanner')">New Investigation</button>
+              </div>
+              <div class="table-scroll-wrap">
+                <table class="forensic-table-clean">
+                  <thead>
+                    <tr>
+                      <th>Dossier Ref</th>
+                      <th>Investigation Target</th>
+                      <th>Forensic Conclusion</th>
+                      <th>Model Output</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="reportsTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 7: DOCS -->
+          <div id="docsTab" class="tab-content-panel">
+            <div class="glass-panel-box" style="padding: 1.75rem;">
+              <span class="mono-tag">ARCHITECTURE SPECIFICATION</span>
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: #FFFFFF; margin: 0.4rem 0 1rem;">Dual-Stream Spatial &amp; Frequency Network</h3>
+              <p style="color: #C5C6CA; line-height: 1.7; margin-bottom: 1.25rem;">
+                DeepShield-X fuses spatial feature extraction with frequency-domain spectral analysis to detect subtle generative artifacts. While spatial backbones analyze blending boundaries, the 2D Fast Fourier Transform (FFT) branch isolates transposed convolution checkerboard artifacts in the frequency domain.
+              </p>
+              <div style="display: flex; gap: 1rem;">
+                <a href="TECHNICAL_REPORT.md" target="_blank" class="btn btn-glass-pill btn-sm">Read Technical Report (5 Pages)</a>
+                <a href="evaluation_metric.md" target="_blank" class="btn btn-glass-pill btn-sm">Evaluation Rubric Breakdown</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       FORMAL FORENSIC DOSSIER MODAL
+       ========================================================================= -->
+  <div class="report-modal-backdrop" id="dossierModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 200; display: none; align-items: center; justify-content: center; padding: 2rem;">
+    <div style="width: 100%; max-width: 780px; max-height: 90vh; background: #1C1D21; border: 1px solid var(--border-glass-bright); border-radius: 16px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); overflow-y: auto; padding: 2.5rem; position: relative;">
+      <button onclick="closeForensicDossier()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(161, 161, 170, 0.15); border: none; color: #FFFFFF; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+
+      <div style="border-bottom: 1px solid var(--border-glass); padding-bottom: 1.25rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <span class="mono-tag">EVIDENTIARY CERTIFICATE</span>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF; margin-top: 0.2rem;">FORENSIC MEDIA DOSSIER</h2>
+        </div>
+        <div style="text-align: right; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+          REF: <span id="dossierRefId" style="color: var(--refract-cyan);">DSX-9942</span><br>
+          <span id="dossierTimestamp">2026-11-03 16:30 UTC</span>
+        </div>
+      </div>
+
+      <div id="dossierVerdictBox" style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;">
+        <span class="mono-tag" style="color: #ef4444;">PRIMARY CLASSIFICATION VERDICT</span>
+        <div style="font-size: 1.35rem; font-weight: 800; color: #ef4444; margin: 0.3rem 0;" id="dossierVerdictTitle">SYNTHETIC MEDIA DETECTED (LABEL = 1)</div>
+        <div style="font-size: 0.85rem; color: #F7F8F8;" id="dossierVerdictDesc">Confidence P(Fake) = 0.9480. High-frequency spectral and spatial boundary seam anomalies detected.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.85rem;">
+        <div>
+          <div style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Target Media Identifier</div>
+          <div style="font-family: var(--font-mono); font-weight: 600; color: #FFFFFF;" id="dossierTargetId">fake_face_001.jpg</div>
+          <div style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; margin-top: 0.75rem;">Analysis Model</div>
+          <div style="font-family: var(--font-mono); font-weight: 600; color: #FFFFFF;">DeepShieldXNet-v2.4-dualstream</div>
+        </div>
+        <div>
+          <div style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Spectral Anomaly Score</div>
+          <div style="font-family: var(--font-mono); font-weight: 600; color: var(--refract-cyan);" id="dossierSpectralScore">88.7%</div>
+          <div style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; margin-top: 0.75rem;">Boundary Discontinuity Index</div>
+          <div style="font-family: var(--font-mono); font-weight: 600; color: var(--refract-cyan);" id="dossierBoundaryScore">81.3%</div>
+        </div>
+      </div>
+
+      <div style="background: rgba(8, 9, 10, 0.5); border: 1px solid var(--border-glass); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+        <span class="mono-tag">INVESTIGATIVE OBSERVATIONS</span>
+        <p style="font-size: 0.82rem; color: #D1D2D6; line-height: 1.6; margin-top: 0.35rem;" id="dossierDetailedObservations">
+          Cross-frequency analysis identified a periodic grid pattern consistent with transposed convolutional upsampling commonly observed in generative adversarial networks (GANs) and latent diffusion models. Spatial Grad-CAM class activation confirmed significant attention concentration along the facial perimeter and mandibular boundary.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.85rem;">
+        <button class="btn btn-glass-pill btn-sm" onclick="window.print()">Print Dossier</button>
+        <button class="btn btn-gradient btn-sm" onclick="downloadDossierText()">Export Text Record</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

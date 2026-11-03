@@ -1,0 +1,1095 @@
+/* ==========================================================================
+   DEEPSHIELD-X — DIGITAL FORENSIC INTELLIGENCE
+   Titanium Slate 3D Glassmorphism Design System
+   Exact Reference Layout Specification
+   ========================================================================== */
+
+/* 1. Official Titanium Slate Palette & Refraction Tokens */
+:root {
+  /* Core Titanium Slate Palette */
+  --bg-primary: #08090A;            /* Cinematic dark background */
+  --bg-surface: #1C1D21;            /* Surfaces, cards & elevated containers */
+  --text-muted: #62666D;            /* Secondary / muted metadata text */
+  --accent-primary: #5E6AD2;        /* Primary indigo-violet accent */
+  --text-primary: #F7F8F8;          /* Primary light text */
+  --border-subtle: #A1A1AA;         /* Subtle borders & supporting elements */
+
+  /* Derived Glassmorphism & Refraction Accents */
+  --bg-surface-glass: rgba(28, 29, 33, 0.65);
+  --bg-surface-glass-hover: rgba(35, 37, 44, 0.78);
+  --bg-hud-glass: rgba(18, 20, 26, 0.82);
+  --border-glass: rgba(161, 161, 170, 0.16);
+  --border-glass-bright: rgba(161, 161, 170, 0.32);
+  --border-accent: rgba(94, 106, 210, 0.45);
+
+  /* Iridescent Refraction Highlights (Cyan, Blue, Violet, Magenta) */
+  --refract-cyan: #00f2fe;
+  --refract-blue: #38bdf8;
+  --refract-indigo: #5E6AD2;
+  --refract-violet: #a855f7;
+  --refract-magenta: #ec4899;
+  --refract-pink: #f43f5e;
+
+  /* Strict Semantic Alerts & Verification */
+  --semantic-alert: #ef4444;
+  --semantic-alert-bg: rgba(239, 68, 68, 0.14);
+  --semantic-alert-border: rgba(239, 68, 68, 0.4);
+  --semantic-success: #10b981;
+  --semantic-success-bg: rgba(16, 185, 129, 0.14);
+  --semantic-success-border: rgba(16, 185, 129, 0.4);
+
+  /* Typography */
+  --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif-italic: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Depth & Shadows */
+  --shadow-glass: 0 12px 36px rgba(0, 0, 0, 0.55);
+  --shadow-glow-indigo: 0 0 35px rgba(94, 106, 210, 0.35);
+  --shadow-glow-cyan: 0 0 25px rgba(0, 242, 254, 0.28);
+  --shadow-glow-pink: 0 0 30px rgba(236, 72, 153, 0.32);
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+}
+
+/* 2. Global Resets & Base Canvas */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08090A;
+}
+::-webkit-scrollbar-thumb {
+  background: #23252C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Cinematic Background Glows & Particle Canvas */
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 75% 25%, rgba(94, 106, 210, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 65% 35%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 20% 75%, rgba(168, 85, 247, 0.09) 0%, transparent 50%),
+    #08090A;
+}
+
+#particleCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Fine Technical Background Grid */
+.technical-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(161, 161, 170, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 161, 170, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Universal Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--refract-cyan);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.italic-accent {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #5E6AD2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-right: 0.1em;
+}
+
+/* 4. Glassmorphism Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.7rem 1.35rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+/* Prominent Gradient Glow Button (e.g., "Start Scanning ->") */
+.btn-gradient {
+  background: linear-gradient(135deg, #5E6AD2 0%, #8b5cf6 50%, #ec4899 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.45), 0 0 12px rgba(236, 72, 153, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-gradient:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 28px rgba(139, 92, 246, 0.6), 0 0 20px rgba(236, 72, 153, 0.5);
+}
+.btn-gradient:active {
+  transform: translateY(0);
+}
+
+/* Primary White Glass Pill (e.g., "Scan Media Now ->") */
+.btn-light-pill {
+  background: #F7F8F8;
+  color: #08090A;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-light-pill:hover {
+  background: #FFFFFF;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.4);
+}
+
+/* Dark Glass Pill (e.g., "Watch Demo" & "Sign In") */
+.btn-glass-pill {
+  background: rgba(28, 29, 33, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  border: 1px solid rgba(161, 161, 170, 0.22);
+}
+.btn-glass-pill:hover {
+  background: rgba(35, 37, 44, 0.85);
+  border-color: rgba(161, 161, 170, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8rem;
+}
+
+/* 5. View Switcher Architecture (Landing Page vs Dashboard Workspace) */
+.view-container {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+.view-container.active-view {
+  display: block;
+}
+
+/* ==========================================================================
+   6. LANDING PAGE STYLING (EXACT REFERENCE SPECIFICATION)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 9, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(161, 161, 170, 0.1);
+  padding: 0.95rem 2.5rem;
+}
+
+.header-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Logo (Matching reference) */
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-shield-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(94, 106, 210, 0.35) 0%, rgba(168, 85, 247, 0.25) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c084fc;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.brand-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Nav Links */
+.nav-links-row {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-link-item {
+  color: #C5C6CA;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+.nav-link-item:hover {
+  color: #FFFFFF;
+}
+
+.nav-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* ==========================================================================
+   7. HERO SECTION (REFERENCE MATCH)
+   ========================================================================== */
+.hero-wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 4.5rem 2.5rem 3rem;
+  position: relative;
+}
+
+.hero-columns {
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+}
+
+.hero-left-content {
+  z-index: 5;
+  position: relative;
+}
+
+.hero-category-tag {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.hero-headline {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+  margin-bottom: 1.4rem;
+}
+
+.hero-subhead {
+  font-size: 1.05rem;
+  color: #8C8F96;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+}
+
+.hero-ctas-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Metrics Row Below CTAs */
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  border-top: 1px solid rgba(161, 161, 170, 0.1);
+  padding-top: 1.8rem;
+}
+
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hero-stat-number {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Hero Right: Crystalline 3D Glass Butterfly + HUD Card */
+.hero-right-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+/* Glowing curved horizon line beneath butterfly */
+.horizon-glow-ring {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  right: 5%;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 1px solid rgba(0, 242, 254, 0.4);
+  box-shadow: 0 -8px 25px rgba(0, 242, 254, 0.35), 0 -18px 45px rgba(94, 106, 210, 0.3);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* 3D Glass Hero Butterfly Artwork */
+.hero-butterfly-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  animation: floatingLevitation 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 20px 40px rgba(94, 106, 210, 0.35)) drop-shadow(0 0 30px rgba(0, 242, 254, 0.2));
+  z-index: 2;
+}
+
+.hero-butterfly-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@keyframes floatingLevitation {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0.8deg); }
+  100% { transform: translateY(4px) rotate(-0.5deg); }
+}
+
+/* Floating Glass HUD Card ("ANALYZING...") on Right Wing */
+.glass-hud-analyzing {
+  position: absolute;
+  top: 12%;
+  right: -2%;
+  width: 210px;
+  background: rgba(18, 20, 26, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(161, 161, 170, 0.2);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 242, 254, 0.15);
+  z-index: 10;
+  animation: hudFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes hudFloat {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-7px); }
+}
+
+.hud-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.hud-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--refract-cyan);
+  letter-spacing: 0.08em;
+}
+
+/* Equalizer Waveform Bars */
+.hud-waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 22px;
+  margin-bottom: 0.95rem;
+  padding: 0 0.2rem;
+}
+
+.wave-bar {
+  width: 2.5px;
+  background: var(--refract-cyan);
+  border-radius: 2px;
+  animation: waveBounce 1.4s ease-in-out infinite alternate;
+}
+.wave-bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.wave-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+.wave-bar:nth-child(3) { height: 20px; animation-delay: 0.15s; }
+.wave-bar:nth-child(4) { height: 10px; animation-delay: 0.4s; }
+.wave-bar:nth-child(5) { height: 18px; animation-delay: 0.25s; }
+.wave-bar:nth-child(6) { height: 8px; animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { height: 16px; animation-delay: 0.2s; }
+.wave-bar:nth-child(8) { height: 22px; animation-delay: 0.35s; }
+.wave-bar:nth-child(9) { height: 12px; animation-delay: 0.05s; }
+.wave-bar:nth-child(10){ height: 15px; animation-delay: 0.45s; }
+.wave-bar:nth-child(11){ height: 7px; animation-delay: 0.2s; }
+
+@keyframes waveBounce {
+  0% { transform: scaleY(0.4); opacity: 0.6; }
+  100% { transform: scaleY(1.2); opacity: 1; }
+}
+
+/* Checklist items in HUD */
+.hud-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(161, 161, 170, 0.12);
+  padding-top: 0.75rem;
+}
+
+.hud-check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: #D1D2D6;
+}
+
+.hud-check-item.verified .check-icon {
+  color: #38bdf8;
+}
+.hud-check-item.pending .check-icon {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. 4 HORIZONTAL GLASS FEATURE CARDS (EXACT REFERENCE ROW)
+   ========================================================================== */
+.features-cards-row {
+  max-width: 1320px;
+  margin: 3.5rem auto 5.5rem;
+  padding: 0 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.glass-feature-card {
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 1.4rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.28) 0%, rgba(0, 242, 254, 0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass-feature-card:hover {
+  background: var(--bg-surface-glass-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(94, 106, 210, 0.2);
+}
+
+.feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(35, 37, 44, 0.85);
+  border: 1px solid rgba(161, 161, 170, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #c084fc;
+}
+
+.feature-card-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.feature-card-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   9. "HOW IT WORKS" SECTION (EXACT REFERENCE COMPOSITION)
+   ========================================================================== */
+.how-it-works-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 6.5rem;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* Left: 3D Holographic Wireframe Face Plates Artwork */
+.face-plates-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.face-plates-artwork {
+  width: 100%;
+  max-width: 460px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(168, 85, 247, 0.25);
+  position: relative;
+}
+
+.face-plates-artwork img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Right Column: Copy + 4-Step Flow */
+.how-it-works-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-tag {
+  margin-bottom: 1rem;
+}
+
+.section-headline {
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin-bottom: 1.15rem;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: #8C8F96;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 2.8rem;
+}
+
+/* 4-Step Horizontal Flow Icons */
+.steps-flow-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.flow-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+}
+
+.flow-step-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(28, 29, 33, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(161, 161, 170, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c084fc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: var(--transition-fast);
+}
+
+.flow-step-item:hover .flow-step-icon {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.25);
+  transform: translateY(-2px);
+}
+
+.flow-step-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #D1D2D6;
+  white-space: nowrap;
+}
+
+.flow-step-arrow {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   10. APPLICATION WORKSPACE (TITANIUM SLATE REDESIGN)
+   ========================================================================== */
+.workspace-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sidebar */
+.workspace-sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width var(--transition-normal);
+  z-index: 50;
+}
+
+.workspace-sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-top {
+  height: 72px;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.workspace-sidebar.collapsed .sidebar-brand-name,
+.workspace-sidebar.collapsed .sidebar-nav-label,
+.workspace-sidebar.collapsed .sidebar-footer-content {
+  display: none;
+}
+
+.sidebar-collapse-btn {
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.sidebar-collapse-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(161, 161, 170, 0.45);
+}
+
+.sidebar-nav-items {
+  list-style: none;
+  padding: 1.25rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.sidebar-tab-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.72rem 0.95rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #8C8F96;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-fast);
+}
+
+.sidebar-tab-btn:hover {
+  background: rgba(161, 161, 170, 0.08);
+  color: #FFFFFF;
+}
+
+.sidebar-tab-btn.active {
+  background: rgba(94, 106, 210, 0.16);
+  color: #FFFFFF;
+  border-color: rgba(94, 106, 210, 0.4);
+  font-weight: 600;
+}
+
+.sidebar-bottom-meta {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* Workspace Main Stage */
+.workspace-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-primary);
+}
+
+.workspace-navbar {
+  height: 72px;
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(8, 9, 10, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.workspace-scroll-pane {
+  flex-grow: 1;
+  padding: 2.2rem;
+  overflow-y: auto;
+}
+
+.tab-content-panel {
+  display: none;
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.tab-content-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glass Surface Panels for Dashboard */
+.glass-panel-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  box-shadow: var(--shadow-glass);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.panel-header-strip {
+  padding: 1.15rem 1.4rem;
+  border-bottom: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-content-body {
+  padding: 1.4rem;
+}
+
+/* 11. Scanner Workspace Inside Dashboard */
+.scanner-grid-two {
+  display: grid;
+  grid-template-columns: 1.1fr 1.35fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+.scanner-dropzone {
+  border: 2px dashed rgba(161, 161, 170, 0.28);
+  border-radius: 12px;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(28, 29, 33, 0.5);
+  transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.scanner-dropzone:hover, .scanner-dropzone.drag-over {
+  border-color: var(--accent-primary);
+  background: rgba(94, 106, 210, 0.08);
+}
+
+.scanner-stage-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 320px;
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass);
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scanner-stage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scanner-laser-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--refract-cyan), transparent);
+  box-shadow: 0 0 12px var(--refract-cyan);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scanning-active .scanner-laser-bar {
+  opacity: 1;
+  animation: laserScanSweep 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes laserScanSweep {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* 12. Explainability Canvases (Grad-CAM, 2D FFT) */
+.triad-explain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.explain-frame {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.explain-canvas-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background: #0A0A0C;
+  border: 1px solid var(--border-glass);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.explain-canvas-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 13. Data Tables */
+.table-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.forensic-table-clean {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.84rem;
+}
+
+.forensic-table-clean th {
+  background: rgba(28, 29, 33, 0.8);
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.forensic-table-clean td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(161, 161, 170, 0.08);
+  color: #D1D2D6;
+}
+
+.forensic-table-clean tr:hover td {
+  background: rgba(161, 161, 170, 0.05);
+  color: #FFFFFF;
+}
+
+/* 14. Responsive Media Queries */
+@media (max-width: 1080px) {
+  .hero-columns {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-subhead {
+    margin: 0 auto 2.2rem;
+  }
+  .hero-ctas-row {
+    justify-content: center;
+  }
+  .hero-stats-row {
+    justify-content: center;
+  }
+  .features-cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .section-desc {
+    margin: 0 auto 2.8rem;
+  }
+  .steps-flow-row {
+    justify-content: center;
+  }
+  .scanner-grid-two {
+    grid-template-columns: 1fr;
+  }
+  .triad-explain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.6rem;
+  }
+  .features-cards-row {
+    grid-template-columns: 1fr;
+  }
+  .hero-stats-row {
+    gap: 1.5rem;
+  }
+  .glass-hud-analyzing {
+    display: none;
+  }
+  .workspace-sidebar {
+    position: fixed;
+    height: 100vh;
+    transform: translateX(-100%);
+  }
+}
